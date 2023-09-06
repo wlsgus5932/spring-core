@@ -23,13 +23,13 @@ public class OrderServiceTest {
     @Test
     void createOrder() {
         Long memberId = 1L;
-        Member member = new Member(memberId, "memberA", Grade.VIP);
+        Member member = new Member(memberId, "memberA", Grade.BASIC);
 
         memberService.join(member);
         Member findMember = memberService.findById(memberId);
 
         Order orderA = orderService.createOrder(findMember.getId(), "orderA", 10000);
-        Assertions.assertThat(orderA.getDiscountPrice()).isEqualTo(1000);
+        Assertions.assertThat(orderA.getDiscountPrice()).isEqualTo(0);
 
     }
 }
